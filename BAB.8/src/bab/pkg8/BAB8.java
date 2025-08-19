@@ -132,6 +132,37 @@ public class BAB8 {
             } // Akhir loop kursi
         } // Akhir loop kelas
 
+                int arr[] = new int[4];
+                boolean hasil = true;
+                arr[0] = 2;
+                arr[1] = 5;
+                arr[2] = 7;
+                arr[3] = 1;
+                while (hasil == true) {
+                String input = JOptionPane.showInputDialog(null,
+                "masukan bilangan bulat :");
+                int cekInputan = Integer.parseInt(input);
+                for (int a = 0; a < 4; a++) {
+                if (cekInputan == arr[a]) {
+                hasil = false;
+                break;
+                } else {
+                hasil = true;
+                }
+                }
+                if (hasil == true) {
+                JOptionPane.showMessageDialog(null, "Angka " + cekInputan
+                + " tidak ada di dalam array.");
+                
+                } else {
+                JOptionPane.showMessageDialog(null, "Angka " + cekInputan
+                + " ada di dalam array.");
+                
+                }
+                }
+                }
+
     } // Akhir method main
 
 } // Akhir class BAB8
+
