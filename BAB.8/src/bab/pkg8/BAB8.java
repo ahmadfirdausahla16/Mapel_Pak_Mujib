@@ -84,7 +84,6 @@ public class BAB8 {
                             JOptionPane.INFORMATION_MESSAGE);
                     if (input == null) { // Jika user klik cancel
                         System.out.println("Input jumlah murid dibatalkan untuk kelas " + namaKelas + ".");
-                        // Opsi: bisa juga break dari loop kelas atau kembali ke input nama kelas
                         jumlahKursi = 0; // Set ke 0 agar tidak error saat inisialisasi array
                         inputValid = true; // Keluar dari loop input jumlahKursi
                         break; // Keluar dari loop while untuk input jumlahKursi
@@ -132,45 +131,65 @@ public class BAB8 {
             } // Akhir loop kursi
         } // Akhir loop kelas
 
-                int arr[] = new int[4];
-                boolean hasil = true;
-                arr[0] = 2;
-                arr[1] = 5;
-                arr[2] = 7;
-                arr[3] = 1;
-                while (hasil == true) {
-                String input = JOptionPane.showInputDialog(null,
-                "masukan bilangan bulat :");
-                int cekInputan = Integer.parseInt(input);
+        System.out.println("-----------"); // Tambahkan pemisah untuk bagian baru
+
+        // Bagian kode baru untuk mencari angka dalam array
+        int arr[] = new int[4];
+        boolean hasil = true;
+        arr[0] = 2;
+        arr[1] = 5;
+        arr[2] = 7;
+        arr[3] = 1;
+
+        boolean angkaDitemukan = false; // Ganti nama variabel agar tidak ambigu
+        while (!angkaDitemukan) { // Loop ini akan terus berjalan sampai angka ditemukan atau dibatalkan
+            try {
+                String inputAngka = JOptionPane.showInputDialog(null, "Masukan bilangan bulat :"); // Ganti nama variabel input
+                if (inputAngka == null) { // Jika user klik cancel
+                    System.out.println("Pencarian angka dibatalkan.");
+                    break; // Keluar dari loop while
+                }
+                int cekInputan = Integer.parseInt(inputAngka);
+                angkaDitemukan = false; // Reset status setiap kali input baru
                 for (int a = 0; a < 4; a++) {
-                if (cekInputan == arr[a]) {
-                hasil = false;
-                break;
-                } else {
-                hasil = true;
+                    if (cekInputan == arr[a]) {
+                        angkaDitemukan = true;
+                        JOptionPane.showMessageDialog(null, "Angka " + cekInputan + " ada di dalam array.");
+                        break; // Keluar dari loop for jika angka ditemukan
+                    }
                 }
+                if (!angkaDitemukan) { // Jika setelah loop for angka tidak ditemukan
+                    JOptionPane.showMessageDialog(null, "Angka " + cekInputan + " tidak ada di dalam array.");
                 }
-                if (hasil == true) {
-                JOptionPane.showMessageDialog(null, "Angka " + cekInputan
-                + " tidak ada di dalam array.");
-                
-                } else {
-                JOptionPane.showMessageDialog(null, "Angka " + cekInputan
-                + " ada di dalam array.");
-                
-                }
-                }
-                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Input tidak valid! Masukkan angka untuk pencarian.");
+            }
+        }
 
-                String input = "";
-                int cekbil = 0;
-                do{
-                input = JOptionPane.showInputDialog(null, "4 x 3 :");
-                cekbil = Integer.parseInt(input);
-                }while(cekbil != 12);
+        System.out.println("-----------"); // Tambahkan pemisah
 
+        // Bagian kode baru untuk tebak-tebakan perkalian
+        int cekbil = 0;
+        do {
+            try {
+                String inputPerkalian = JOptionPane.showInputDialog(null, "Berapa 4 x 3 ? (Masukkan angka):"); // Ganti nama variabel input
+                if (inputPerkalian == null) { // Jika user klik cancel
+                    System.out.println("Tebak-tebakan perkalian dibatalkan.");
+                    break; // Keluar dari loop do-while
+                }
+                cekbil = Integer.parseInt(inputPerkalian);
+                if (cekbil != 12) {
+                    JOptionPane.showMessageDialog(null, "Jawaban salah. Coba lagi!");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Input tidak valid! Masukkan angka untuk jawaban.");
+                cekbil = 0; // Set ke 0 agar loop do-while tetap berjalan jika input tidak valid
+            }
+        } while (cekbil != 12);
+        if (cekbil == 12) { // Tambahkan pesan jika jawaban benar
+            JOptionPane.showMessageDialog(null, "Selamat! Jawaban kamu benar: 4 x 3 = " + cekbil);
+        }
+        
     } // Akhir method main
 
 } // Akhir class BAB8
-
-
