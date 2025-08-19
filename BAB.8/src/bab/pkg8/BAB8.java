@@ -162,7 +162,15 @@ public class BAB8 {
                 }
                 }
 
+                String input = "";
+                int cekbil = 0;
+                do{
+                input = JOptionPane.showInputDialog(null, "4 x 3 :");
+                cekbil = Integer.parseInt(input);
+                }while(cekbil != 12);
+
     } // Akhir method main
 
 } // Akhir class BAB8
+
 
